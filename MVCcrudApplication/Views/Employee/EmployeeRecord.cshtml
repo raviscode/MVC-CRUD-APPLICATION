@@ -1,0 +1,59 @@
+﻿@model  IEnumerable<MVCcrudApplication.Models.Employee> 
+    @*Use IEnumerable if you want to use for each loop*@
+
+@{
+    ViewBag.Title = "EmployeeRecord";
+}
+
+<h2>EmployeeRecord</h2>
+
+<table class="table table-inverse">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpID)
+            </td>
+            <td>
+                @Html.ActionLink(item.Name, "EmpDteail", "Employee", new { EmpID = item.EmpID }, null /* html attributes */)
+                @*making a column as Link*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+        </tr>
+    }
+    <tr>
+        <td colspan="5">
+            @Html.ActionLink("Create Employee", "InsertEmpDetail")
+        </td>
+    </tr>
+</table>
+
+
+
